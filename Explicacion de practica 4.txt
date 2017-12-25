@@ -1,0 +1,73 @@
+SoluciÛn N-tupla x={x1, x2,...xN}
+
+En cada columna solo puede haber 1 reina
+En cada fila solo puede haber 1 reina
+
+		Xi=a
+
+En la fila i y la columna a se coloca una reina
+
+	   x1 x2 x3 x4
+	x={2 ,4 ,1 ,3 }
+
+Restricciones:
+
+
+		Xi pertenece [0...N-1]
+
+	- No puede haber dos reinas en las misma columna
+		
+		Xi=/=Xj para todo i distinto de j
+
+	- No puede haber dos reinas en las misma fila
+
+		Esta contemplado ya, gracias a la forma en la que hemos puesto la tupla
+	
+	- No puede haber dos reinas en la misma diagonal
+
+		Xa = b }-----> |a-c|=/=|b-c|------> si la resta me diera igual sgnificaria que estan dos reinas en la misma diagonal
+		Xc = d }	|
+				|
+				|----->|a-c|=/=|Xa-Xc|
+
+* Trabaja por etapas y en cada etapa "K" decidimos en quÈ columna vamos a colocar la reina K-Èsima
+(la reina numero 3 va en la fila 3, lo que tenemos que decidir es en que coluima colocarlo)
+
+
+
+
+
+EJEMPLO DE CAMBIAR DE FOR A DO_WHILE
+
+	/**
+	 * Calcula la soluci√≥n para una etapa concreta.
+	 * @param etapa etapa para la que queremos calcular la soluci√≥n.
+	 */
+	public void vueltaAtras(int etapa) {
+		// TODO: implementar el algoritmo que encuentra la primera soluci√≥n para una etapa concreta
+		int i;
+		if (etapa<n) {
+			x[etapa]=0;
+			do{
+				x[etapa]++;
+				if(valido(etapa)){
+					if(etapa<n){
+						vueltaAtras(etapa+1);}
+					else{exito=true;}
+				}
+			}while(x[etapa]<n||!exito);
+		}
+		/*
+			}
+			for(i = 0; (i<n)&&(!exito); i++){
+				solucion[etapa] = i;
+				if (valido(etapa)){
+					if (etapa<n-1){ 
+						vueltaAtras(etapa+1);
+					}
+					else{
+						exito = true;}
+				}
+			}
+		} */
+	} 
